@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Syno Search
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+ 
+<ion-content>
+
+    <ion-refresher (ionRefresh)="doRefresh($event)">
+      <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+ 
+    <ion-searchbar [debounce]="450" spellcheck="true" placeholder="F.eks. BIL" autocomplete="true" [(ngModel)]="searchTerm" (ionInput)="setFilteredItems()"></ion-searchbar>
+ 
+    <ion-list>
+        <ion-item *ngFor="let item of items | async">
+            {{ item.syno }}
+        </ion-item>
+    </ion-list>
+ 
+</ion-content>
